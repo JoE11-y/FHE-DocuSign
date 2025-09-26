@@ -1,95 +1,97 @@
-# 🔐 Confidential Smart Legal Contracts (FHE-DocuSign)
+# 💸 Confidential Payroll Management (FHE-Payroll)
 
-> A next-generation DocuSign built on a blockchain with **Fully Homomorphic Encryption (FHE)**. Store contracts
-> confidentially, enforce signing rules automatically, and prove outcomes without revealing sensitive terms.
+> **Payroll reimagined** with blockchain and **Fully Homomorphic Encryption (FHE)**. Automate salary payouts in ERC-20
+> stablecoins, enforce schedules privately, and give employees verifiable receipts — all without exposing sensitive
+> payroll data.
 
 ## 📖 Overview
 
-Traditional e-signature apps like DocuSign work well but require **trust in a central provider**. They store documents
-in plaintext on their servers, manage audit logs internally, and control the whole process.
+Payroll is one of the most sensitive parts of business operations. Today’s systems (ADP, Gusto, Deel, etc.) handle
+compliance and execution, but they require **full trust** in a central provider who sees every salary, schedule, and
+adjustment.
 
-With **FHE-powered smart contracts**, we flip this model:
+With **Confidential Payroll Management**, we move payroll to a **neutral, verifiable blockchain layer** powered by FHE:
 
-- Contracts and sensitive fields (price, dates, clauses) are always **encrypted**.
-- The blockchain itself can still **enforce rules** (e.g., “all parties signed before deadline”) **without ever seeing
-  the data**.
-- Results are **verifiable on-chain**, audit logs are immutable, and only signers can decrypt.
+- Salaries and schedules are **encrypted**, visible only to employer and employee.
+- The blockchain can still **enforce pay dates and rules** (e.g., “pay $5,000 on the 30th of each month”) **without ever
+  learning the salary**.
+- Payments are made in ERC-20 stablecoins (e.g., USDC, DAI), ensuring fast and global payouts.
+- Employees receive **verifiable on-chain receipts**, while sensitive terms remain private.
 
-This creates a **neutral, privacy-first alternative** to Web2 e-signature apps.
+This delivers payroll that is **confidential, trust-minimized, and borderless**.
 
 ## ⚖️ Why It Matters
 
-| Feature                  | Web2 DocuSign                           | FHE-DocuSign                                                 |
-| ------------------------ | --------------------------------------- | ------------------------------------------------------------ |
-| **Document Privacy**     | Stored in plaintext on provider servers | Stored encrypted (AES + FHE), never revealed on-chain        |
-| **Audit Trail**          | Centralized logs in DocuSign’s DB       | Immutable, tamper-proof, on-chain event history              |
-| **Trust Model**          | Trust DocuSign to secure data           | Trustless: validators compute on ciphertext, can’t see terms |
-| **Selective Disclosure** | All or nothing access                   | Reveal only what’s needed (e.g., “salary ≥ $80k”)            |
-| **Composability**        | Isolated e-signature system             | Auto-trigger payments, escrow, workflows                     |
-| **Neutral Ground**       | Vendor-controlled                       | Shared blockchain layer, no single party in control          |
+| Feature                  | Web2 Payroll (e.g., ADP, Deel)          | Confidential Payroll (FHE-Payroll)                                 |
+| ------------------------ | --------------------------------------- | ------------------------------------------------------------------ |
+| **Salary Privacy**       | Provider sees all salaries              | Salaries stored encrypted; only employer & employee know           |
+| **Trust Model**          | Centralized provider manages everything | Trustless: blockchain enforces rules on ciphertext                 |
+| **Audit Trail**          | Logs kept in provider’s DB              | Immutable, on-chain events (no sensitive info)                     |
+| **Cross-Border Pay**     | Complex bank integrations               | Instant ERC-20 stablecoin transfers                                |
+| **Employee Proof**       | Payslip issued by provider              | On-chain verifiable receipt + optional decrypted payslip           |
+| **Selective Disclosure** | All-or-nothing reporting                | Reveal only what’s required (e.g., total payroll, not each salary) |
 
-## ⚙️ How It Works
+## 🔑 Key Features
 
-1. **Create Document**
-   - PDF is encrypted with AES-GCM.
-   - Only signers hold decryption keys.
-   - A document fingerprint (hash) is anchored on-chain.
+- **Confidential Payroll Agreements**
+  - Encrypted salaries, schedules, and payout rules.
+  - Only visible to employer and employee.
 
-2. **Encrypt Key Facts**
-   - Critical fields (e.g., required signatures, expiry date) are encrypted with the contract’s **FHE public key**.
-   - The blockchain processes these fields without seeing them.
+- **Automated Stablecoin Escrow**
+  - Employer funds escrow in ERC-20.
+  - Blockchain releases tranches on due dates, enforced privately by FHE.
 
-3. **Invite & Sign**
-   - Signers decrypt and review the doc locally.
-   - When signing, the blockchain increments an **encrypted counter** inside FHE.
+- **Verifiable Receipts**
+  - Employees get immutable proofs of payment.
+  - Useful for freelancers, DAOs, or compliance audits.
 
-4. **Finalize**
-   - Blockchain checks, inside ciphertext:
-     - “Has required number of signers signed?”
-     - “Is current time ≤ expiry date?”
+- **Selective Reveal**
+  - For disputes or regulators, decrypt only specific fields (e.g., “employee was paid $X in June”) without exposing
+    everything.
 
-   - If true → state changes to **Finalized**.
+## 🎯 MVP Scope
 
-5. **Optional Escrow**
-   - Smart contracts can hold funds, royalties, or assets.
-   - Release is tied to the contract’s encrypted final status.
+- **Smart Contracts**
+  - **PayrollAgreementRegistry**: manages agreements, stores encrypted salaries/schedules.
+  - **PayrollEscrowERC20**: holds ERC-20 funds, executes salary payouts on schedule.
 
-6. **Amend or Reveal**
-   - Amendments = new encrypted version linked to the old one.
-   - For disputes, a threshold of parties can **decrypt specific fields** or the whole doc.
+- **Core Functions**
+  - Create payroll agreement (HR).
+  - Invite employee (wallet address).
+  - Fund payroll vault with stablecoins.
+  - Automated payout release (monthly/biweekly).
+  - On-chain receipt + encrypted payslip export.
 
-## 🔑 Key Benefits
+- **Frontend**
+  - **HR Dashboard**: configure payroll, fund escrow, monitor payouts.
+  - **Employee Portal**: decrypt payslip locally, view payment history, export receipts.
 
-- **Confidentiality** – only signers see the contract.
-- **Verifiable Workflow** – existence & state visible, terms hidden.
-- **Legal Disputes Supported** – selective reveal via threshold decryption.
-- **Programmable Agreements** – tie signatures to escrow, royalties, governance.
-- **Future-Proof** – works for regulated, enterprise, and cross-org use.
+- **Backend**
+  - Event indexer for payroll history.
+  - API for HR and employees (no plaintext salary exposure).
 
-## 🎯 Example Use Cases
+## 🌍 Use Cases
 
-- **NDAs & MSAs** → enforce signatures before a deadline, keep clauses private.
-- **Employment Offers** → prove “salary ≥ X” without exposing entire contract.
-- **Vendor Contracts** → confidential tiered pricing, escrow releases at milestones.
-- **Royalty Agreements** → splits remain secret, payouts auto-execute.
-- **Board / DAO Votes** → votes encrypted, tally homomorphic, only outcome visible.
-
-## 🚀 MVP Scope
-
-- Contract registry for agreements.
-- Encrypted counters (`sign_count`, `required_signers`).
-- Encrypted deadlines (`expiry`).
-- Core functions: `create`, `invite`, `sign`, `finalize`, `amend`.
-- Off-chain storage (IPFS/S3) for encrypted PDFs.
-- Client app for PDF encryption/decryption & signing.
+- **Startups / SMEs** → Confidential payroll without relying on external providers.
+- **DAOs / Web3 Orgs** → Pay contributors in stablecoins, keep salaries private.
+- **Freelancers & Contractors** → Receive provable, borderless payments.
+- **Enterprises** → Cross-border payroll compliance with privacy-first guarantees.
 
 ## 🛤 Roadmap
 
-- [ ] Threshold key management (multi-party decryption for disputes).
-- [ ] Escrow integration for conditional payouts.
-- [ ] Selective disclosure (decrypt only certain clauses).
-- [ ] Enterprise connectors (Salesforce, Workday, etc.).
-- [ ] Compliance mapping (ESIGN, UETA, eIDAS).
+- [ ] MVP with ERC-20 escrow + confidential agreements.
+- [ ] Batch payroll (one tx, multiple employees).
+- [ ] Selective disclosure proofs for regulators/auditors.
+- [ ] Fiat off-ramp integration (convert USDC → bank transfer).
+- [ ] Enterprise connectors (Workday, QuickBooks, etc.).
+
+## 📚 Tech Stack
+
+- **Blockchain**: FHE-enabled EVM chain
+- **Smart Contracts**: Solidity (PayrollAgreementRegistry, PayrollEscrowERC20)
+- **Frontend**: React/Next.js (HR dashboard, employee portal)
+- **Backend**: NestJS/FastAPI for orchestration & indexing
+- **Storage**: Encrypted blobs in IPFS/S3 for payslip metadata
 
 ## 🧪 Development Template
 
