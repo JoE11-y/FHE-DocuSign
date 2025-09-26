@@ -1,8 +1,6 @@
-# 💸 Confidential Payroll Management (FHE-Payroll)
+# 🪄 Obscuro
 
-> **Payroll reimagined** with blockchain and **Fully Homomorphic Encryption (FHE)**. Automate salary payouts in ERC-20
-> stablecoins, enforce schedules privately, and give employees verifiable receipts — all without exposing sensitive
-> payroll data.
+> **Obscuro hides what must remain unseen.**
 
 ## 📖 Overview
 
@@ -10,11 +8,11 @@ Payroll is one of the most sensitive parts of business operations. Today’s sys
 compliance and execution, but they require **full trust** in a central provider who sees every salary, schedule, and
 adjustment.
 
-With **Confidential Payroll Management**, we move payroll to a **neutral, verifiable blockchain layer** powered by FHE:
+With **Obscuro**, payroll shifts to a **neutral, verifiable blockchain layer** powered by FHE:
 
 - Salaries and schedules are **encrypted**, visible only to employer and employee.
-- The blockchain can still **enforce pay dates and rules** (e.g., “pay $5,000 on the 30th of each month”) **without ever
-  learning the salary**.
+- The blockchain can still **enforce pay dates and rules** (e.g., _“pay $5,000 on the 30th of each month”_) **without
+  ever learning the salary**.
 - Payments are made in ERC-20 stablecoins (e.g., USDC, DAI), ensuring fast and global payouts.
 - Employees receive **verifiable on-chain receipts**, while sensitive terms remain private.
 
@@ -22,32 +20,27 @@ This delivers payroll that is **confidential, trust-minimized, and borderless**.
 
 ## ⚖️ Why It Matters
 
-| Feature                  | Web2 Payroll (e.g., ADP, Deel)          | Confidential Payroll (FHE-Payroll)                                 |
-| ------------------------ | --------------------------------------- | ------------------------------------------------------------------ |
-| **Salary Privacy**       | Provider sees all salaries              | Salaries stored encrypted; only employer & employee know           |
-| **Trust Model**          | Centralized provider manages everything | Trustless: blockchain enforces rules on ciphertext                 |
-| **Audit Trail**          | Logs kept in provider’s DB              | Immutable, on-chain events (no sensitive info)                     |
-| **Cross-Border Pay**     | Complex bank integrations               | Instant ERC-20 stablecoin transfers                                |
-| **Employee Proof**       | Payslip issued by provider              | On-chain verifiable receipt + optional decrypted payslip           |
-| **Selective Disclosure** | All-or-nothing reporting                | Reveal only what’s required (e.g., total payroll, not each salary) |
+| Feature                  | Web2 Payroll (e.g., ADP, Deel)          | Obscuro — Confidential Payroll                           |
+| ------------------------ | --------------------------------------- | -------------------------------------------------------- |
+| **Salary Privacy**       | Provider sees all salaries              | Salaries stored encrypted; only employer & employee know |
+| **Trust Model**          | Centralized provider manages everything | Trustless: blockchain enforces rules on ciphertext       |
+| **Audit Trail**          | Logs kept in provider’s DB              | Immutable, on-chain events (no sensitive info)           |
+| **Cross-Border Pay**     | Complex bank integrations               | Instant ERC-20 stablecoin transfers                      |
+| **Employee Proof**       | Payslip issued by provider              | On-chain verifiable receipt + optional decrypted payslip |
+| **Selective Disclosure** | All-or-nothing reporting                | Reveal only what’s required (e.g., totals, not salaries) |
 
 ## 🔑 Key Features
 
-- **Confidential Payroll Agreements**
-  - Encrypted salaries, schedules, and payout rules.
-  - Only visible to employer and employee.
+- **Confidential Payroll Agreements** Encrypted salaries, schedules, and payout rules — visible only to employer and
+  employee.
 
-- **Automated Stablecoin Escrow**
-  - Employer funds escrow in ERC-20.
-  - Blockchain releases tranches on due dates, enforced privately by FHE.
+- **Automated Stablecoin Escrow** Employer funds escrow in ERC-20. Blockchain releases tranches on due dates, enforced
+  privately by FHE.
 
-- **Verifiable Receipts**
-  - Employees get immutable proofs of payment.
-  - Useful for freelancers, DAOs, or compliance audits.
+- **Verifiable Receipts** Employees get immutable proofs of payment, useful for freelancers, DAOs, or compliance audits.
 
-- **Selective Reveal**
-  - For disputes or regulators, decrypt only specific fields (e.g., “employee was paid $X in June”) without exposing
-    everything.
+- **Selective Reveal** For disputes or regulators, decrypt only specific fields (e.g., “employee was paid $X in June”)
+  without exposing everything.
 
 ## 🎯 MVP Scope
 
@@ -92,6 +85,8 @@ This delivers payroll that is **confidential, trust-minimized, and borderless**.
 - **Frontend**: React/Next.js (HR dashboard, employee portal)
 - **Backend**: NestJS/FastAPI for orchestration & indexing
 - **Storage**: Encrypted blobs in IPFS/S3 for payslip metadata
+
+✨ With **Obscuro**, salaries stay hidden, payments stay on time, and trust shifts from providers to code.
 
 ## 🧪 Development Template
 
