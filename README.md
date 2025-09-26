@@ -1,6 +1,6 @@
 # 🪄 Obscuro
 
-> **Obscuro hides what must remain unseen.**
+> **Hides what must remain unseen.**
 
 ## 📖 Overview
 
@@ -20,7 +20,7 @@ This delivers payroll that is **confidential, trust-minimized, and borderless**.
 
 ## ⚖️ Why It Matters
 
-| Feature                  | Web2 Payroll (e.g., ADP, Deel)          | Obscuro — Confidential Payroll                           |
+| Feature                  | Web2 Payroll (e.g., ADP, Deel)          | Obscuro (Confidential Payroll)                           |
 | ------------------------ | --------------------------------------- | -------------------------------------------------------- |
 | **Salary Privacy**       | Provider sees all salaries              | Salaries stored encrypted; only employer & employee know |
 | **Trust Model**          | Centralized provider manages everything | Trustless: blockchain enforces rules on ciphertext       |
